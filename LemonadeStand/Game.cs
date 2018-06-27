@@ -17,6 +17,7 @@ namespace LemonadeStand
             DetermineNumberOfPlayDays();
             DisplayMenuItems();
             OfferPurchases();
+            DisplayLemonadeRecipe();
         }
         //Methods(CAN DO)
 
@@ -63,28 +64,45 @@ namespace LemonadeStand
         }
         public void OfferPurchases()
         {
-            Console.WriteLine("Do you want to make a purchase? Enter: 1 - Cups, 2 - Lemons, 3 - Sugar, 4 - Ice Cubes");
+            Console.WriteLine("Do you want to make a purchase? Enter: 1 - Cups, 2 - Lemons, 3 - Sugar, 4 - Ice Cubes. Or Enter 5 to Continue to Recipe");
             int purchaseChoice = int.Parse(Console.ReadLine());
             if (purchaseChoice == 1)
             {
                 Console.WriteLine("Enter Ice Buying method");
+                OfferPurchases();
             }
             else if (purchaseChoice == 2)
             {
                 Console.WriteLine("Enter Lemon buying method");
+                OfferPurchases();
             }
             else if (purchaseChoice == 3)
             {
                 Console.WriteLine("Enter sugar buying method");
+                OfferPurchases();
             }
             else if (purchaseChoice == 4)
             {
                 Console.WriteLine("Enter Ice Cubes buying method");
+                OfferPurchases();
+            }
+            else if (purchaseChoice == 5)
+            {
+                Console.WriteLine("Continue to next method");
+                DisplayLemonadeRecipe();
             }
             else
             {
                 Console.WriteLine("Invalid Input");
+                OfferPurchases();
             }
+        }
+        public void DisplayLemonadeRecipe()
+        {
+            Console.WriteLine("Lemons Per Pitcher: {lemonsPerPitcher}");
+            Console.WriteLine("Cups of Sugar Per Pitcher: {cupsOfSugarPerPitcher}");
+            Console.WriteLine("Total # of Cups {cupsInInventory}");
+            Console.WriteLine("Ice Cubes per Cup: {iceCubesPerCup}");
         }
     }
 }
