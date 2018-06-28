@@ -9,6 +9,10 @@ namespace LemonadeStand
     class Game
     {
         //members(HAS A)
+        public int lemonsPerPitcher;
+        public int sugarPerPitcher;
+        public int iceCubesPerCup;
+        public double playerMoney = 20;
 
         //Constructor
         public Game()
@@ -17,6 +21,7 @@ namespace LemonadeStand
             DetermineNumberOfPlayDays();
             DisplayMenuItems();
             OfferPurchases();
+            SetLemonadeRecipe();
             DisplayLemonadeRecipe();
         }
         //Methods(CAN DO)
@@ -58,7 +63,7 @@ namespace LemonadeStand
         {
             Console.WriteLine("Lemons: {lemonCount} Ice Cubes: {iceCubeCount} Cups of Sugar: {sugarCount} Cups: {cupCount}");
             Console.WriteLine("Day #");
-            Console.WriteLine("Display: playerMoney");
+            Console.WriteLine($"Money: ${playerMoney}");
             Console.WriteLine("Display: displaytemperatureOfTheDay");
             Console.WriteLine("Display: forecastOFTheDay");
         }
@@ -89,7 +94,6 @@ namespace LemonadeStand
             else if (purchaseChoice == 5)
             {
                 Console.WriteLine("Continue to next method");
-                DisplayLemonadeRecipe();
             }
             else
             {
@@ -97,12 +101,64 @@ namespace LemonadeStand
                 OfferPurchases();
             }
         }
+
+        public void SetLemonadeRecipe()
+        {
+            lemonsPerPitcher = DetermineLemonsPerPitcher();
+            iceCubesPerCup = DetermineIceCubesPerCup();
+            sugarPerPitcher = DetermineSugarPerPitcher();
+            DetermineIfRecipeIsSatisfactory();
+        }
+
+        public void DetermineIfRecipeIsSatisfactory()
+        {
+            Console.WriteLine("Are you happy with the Recipe you have chosen? Enter: yes or no.");
+            string response = Console.ReadLine();
+            if (response == "yes")
+            {
+                Console.WriteLine("Press Enter to Continue.");
+            }
+            else if (response == "no")
+            {
+                lemonsPerPitcher = 0;
+                iceCubesPerCup = 0;
+                sugarPerPitcher = 0;
+                SetLemonadeRecipe();
+            }
+            else
+            {
+                Console.WriteLine("Invalid Input");
+                DetermineIfRecipeIsSatisfactory();
+            }
+        }
+
+        public int DetermineLemonsPerPitcher()
+        {
+            int lemonsPerPitcher;
+            Console.WriteLine("How many Lemons per Pitcher?");
+            lemonsPerPitcher = int.Parse(Console.ReadLine());
+            return lemonsPerPitcher;
+        }
+        public int DetermineSugarPerPitcher()
+        {
+            int sugarPerPitcher;
+            Console.WriteLine("How many Cups of sugar per Pitcher?");
+            sugarPerPitcher = int.Parse(Console.ReadLine());
+            return sugarPerPitcher;
+        }
+        public int DetermineIceCubesPerCup()
+        {
+            int iceCubesPerCup;
+            Console.WriteLine("How many Ice Cubes per Cup?");
+            iceCubesPerCup = int.Parse(Console.ReadLine());
+            return iceCubesPerCup;
+        }
         public void DisplayLemonadeRecipe()
         {
-            Console.WriteLine("Lemons Per Pitcher: {lemonsPerPitcher}");
-            Console.WriteLine("Cups of Sugar Per Pitcher: {cupsOfSugarPerPitcher}");
+            Console.WriteLine($"Lemons Per Pitcher: {lemonsPerPitcher}");
+            Console.WriteLine($"Cups of Sugar Per Pitcher: {sugarPerPitcher}");
             Console.WriteLine("Total # of Cups {cupsInInventory}");
-            Console.WriteLine("Ice Cubes per Cup: {iceCubesPerCup}");
+            Console.WriteLine($"Ice Cubes per Cup: {iceCubesPerCup}");
         }
     }
 }
