@@ -13,6 +13,7 @@ namespace LemonadeStand
         public int sugarPerPitcher;
         public int iceCubesPerCup;
         public double playerMoney = 20;
+        public int iceCubeCount;
 
         //Constructor
         public Game()
@@ -73,7 +74,7 @@ namespace LemonadeStand
             int purchaseChoice = int.Parse(Console.ReadLine());
             if (purchaseChoice == 1)
             {
-                Console.WriteLine("Enter Ice Buying method");
+                Console.WriteLine("Enter cup buying method");
                 OfferPurchases();
             }
             else if (purchaseChoice == 2)
@@ -88,7 +89,7 @@ namespace LemonadeStand
             }
             else if (purchaseChoice == 4)
             {
-                Console.WriteLine("Enter Ice Cubes buying method");
+                BuyIceCubes();
                 OfferPurchases();
             }
             else if (purchaseChoice == 5)
@@ -101,6 +102,44 @@ namespace LemonadeStand
                 OfferPurchases();
             }
         }
+        public void BuyIceCubes()
+        {
+            double costOf100IceCubes = .58;
+            double costOf250IceCubes = 1.64;
+            double costOf500IceCubes = 3.43;
+            Console.WriteLine("How much ice do you want to buy: 100($.58), 250($1.64), 500($3.43) or type exit to go back.");
+            string response = Console.ReadLine();
+            if (response == "100")
+            {
+                playerMoney -= costOf100IceCubes;
+                iceCubeCount += 100;
+                Console.WriteLine($"You bought 100 Ice Cubes! You have {iceCubeCount} ice cubes. You have ${playerMoney}");
+            }
+            else if (response == "250")
+            {
+                playerMoney -= costOf250IceCubes;
+                iceCubeCount += 250;
+                Console.WriteLine($"You bought 250 Ice Cubes! You have {iceCubeCount} ice cubes. You have ${playerMoney}");
+            }
+            else if (response == "500")
+            {
+                playerMoney -= costOf500IceCubes;
+                iceCubeCount += 500;
+                Console.WriteLine($"You bought 500 Ice Cubes! You have {iceCubeCount} ice cubes. You have ${playerMoney}");
+            }
+            else if (response == "exit")
+            {
+                Console.WriteLine("Back to the Store");
+                OfferPurchases();
+            }
+            else
+            {
+                Console.WriteLine("Invalid Input");
+                BuyIceCubes();
+            }
+        }
+        
+
 
         public void SetLemonadeRecipe()
         {
@@ -160,5 +199,6 @@ namespace LemonadeStand
             Console.WriteLine("Total # of Cups {cupsInInventory}");
             Console.WriteLine($"Ice Cubes per Cup: {iceCubesPerCup}");
         }
+
     }
 }
