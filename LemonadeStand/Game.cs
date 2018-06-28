@@ -108,25 +108,60 @@ namespace LemonadeStand
             double costOf100IceCubes = .58;
             double costOf250IceCubes = 1.64;
             double costOf500IceCubes = 3.43;
+
             Console.WriteLine("How much ice do you want to buy: 100($.58), 250($1.64), 500($3.43) or type exit to go back.");
             string response = Console.ReadLine();
+
             if (response == "100")
             {
-                playerMoney -= costOf100IceCubes;
-                iceCubeCount += 100;
-                Console.WriteLine($"You bought 100 Ice Cubes! You have {iceCubeCount} ice cubes. You have ${playerMoney}.");
+
+                if (playerMoney - costOf100IceCubes < 0)
+                {
+                    Console.WriteLine("Ope! Not enough money!");
+                    OfferPurchases();
+                    return;
+                }
+                else
+                {
+                    playerMoney -= costOf100IceCubes;
+                    iceCubeCount += 100;
+                    Console.WriteLine($"You bought 100 Ice Cubes! You have {iceCubeCount} ice cubes. You have ${playerMoney}. Press Enter to continue.");
+                    Console.ReadLine();
+                }
             }
             else if (response == "250")
             {
-                playerMoney -= costOf250IceCubes;
-                iceCubeCount += 250;
-                Console.WriteLine($"You bought 250 Ice Cubes! You have {iceCubeCount} ice cubes. You have ${playerMoney}");
+
+                if (playerMoney - costOf250IceCubes < 0)
+                {
+                    Console.WriteLine("Ope! Not enough money!");
+                    OfferPurchases();
+                    return;
+                }
+                else
+                {
+                    playerMoney -= costOf250IceCubes;
+                    iceCubeCount += 250;
+                    Console.WriteLine($"You bought 250 Ice Cubes! You have {iceCubeCount} ice cubes. You have ${playerMoney}. Press Enter to continue.");
+                    Console.ReadLine();
+                }
             }
             else if (response == "500")
             {
-                playerMoney -= costOf500IceCubes;
-                iceCubeCount += 500;
-                Console.WriteLine($"You bought 500 Ice Cubes! You have {iceCubeCount} ice cubes. You have ${playerMoney}");
+
+                if (playerMoney - costOf500IceCubes < 0)
+                {
+                    Console.WriteLine("Ope! Not enough money!");
+                    OfferPurchases();
+                    return;
+                }
+                else
+                {
+                    playerMoney -= costOf500IceCubes;
+                    iceCubeCount += 500;
+                    Console.WriteLine($"You bought 500 Ice Cubes! You have {iceCubeCount} ice cubes. You have ${playerMoney}. Press Enter to continue.");
+                    Console.ReadLine();
+                }
             }
             else if (response == "exit")
             {
@@ -145,25 +180,60 @@ namespace LemonadeStand
             double costOf10Lemons = .85;
             double costOf30Lemons = 2.07;
             double costOf75Lemons = 4.03;
+
             Console.WriteLine("How many lemons do you want to buy: 10($.85), 30($2.07), 75($4.03) or type exit to go back.");
             string response = Console.ReadLine();
+
             if (response == "10")
             {
-                playerMoney -= costOf10Lemons;
-                lemonCount += 10;
-                Console.WriteLine($"You bought 10 lemons! You have {lemonCount} lemons. You have ${playerMoney}.");
+
+                if (playerMoney - costOf10Lemons < 0)
+                {
+                    Console.WriteLine("Ope! Not enough money!");
+                    OfferPurchases();
+                    return;
+                }
+                else
+                {
+                    playerMoney -= costOf10Lemons;
+                    lemonCount += 10;
+                    Console.WriteLine($"You bought 10 lemons! You have {lemonCount} lemons. You have ${playerMoney}. Press Enter to continue.");
+                    Console.ReadLine();
+                }
             }
             else if (response == "30")
             {
-                playerMoney -= costOf30Lemons;
-                lemonCount += 30;
-                Console.WriteLine($"You bought 30 lemons! You have {lemonCount} lemons. You have ${playerMoney}");
+                
+                if (playerMoney - costOf30Lemons < 0)
+                {
+                    Console.WriteLine("Ope! Not enough money!");
+                    OfferPurchases();
+                    return;
+                }
+                else
+                {
+                    playerMoney -= costOf30Lemons;
+                    lemonCount += 30;
+                    Console.WriteLine($"You bought 30 lemons! You have {lemonCount} lemons. You have ${playerMoney}. Press Enter to continue.");
+                    Console.ReadLine();
+                }
             }
             else if (response == "75")
             {
-                playerMoney -= costOf75Lemons;
-                lemonCount += 75;
-                Console.WriteLine($"You bought 75 lemons! You have {lemonCount} lemons. You have ${playerMoney}");
+                
+                if (playerMoney - costOf75Lemons < 0)
+                {
+                    Console.WriteLine("Ope! Not enough money!");
+                    OfferPurchases();
+                    return;
+                }
+                else
+                {
+                    playerMoney -= costOf75Lemons;
+                    lemonCount += 75;
+                    Console.WriteLine($"You bought 75 lemons! You have {lemonCount} lemons. You have ${playerMoney}. Press Enter to continue.");
+                    Console.ReadLine();
+                }
             }
             else if (response == "exit")
             {
@@ -182,36 +252,71 @@ namespace LemonadeStand
             double costOf25Cups = .88;
             double costOf50Cups = 1.68;
             double costOf100Cups = 3.18;
+
             Console.WriteLine("How many Cups do you want to buy: 25($.88), 50($1.68), 100($3.18) or type exit to go back.");
-            string response = Console.ReadLine();
-            if (response == "25")
-            {
-                playerMoney -= costOf25Cups;
-                cupCount += 25;
-                Console.WriteLine($"You bought 25 cups! You have {cupCount} cups. You have ${playerMoney}.");
-            }
-            else if (response == "50")
-            {
-                playerMoney -= costOf50Cups;
-                cupCount += 50;
-                Console.WriteLine($"You bought 50 cups! You have {cupCount} cups. You have ${playerMoney}");
-            }
-            else if (response == "100")
-            {
-                playerMoney -= costOf100Cups;
-                cupCount += 100;
-                Console.WriteLine($"You bought 100 cups! You have {cupCount} cups. You have ${playerMoney}");
-            }
-            else if (response == "exit")
-            {
-                Console.WriteLine("Back to the Store!");
-                OfferPurchases();
-            }
-            else
-            {
-                Console.WriteLine("Invalid Input");
-                BuyCups();
-            }
+                string response = Console.ReadLine();
+                if (response == "25")
+                {
+
+                if (playerMoney - costOf25Cups < 0)
+                {
+                    Console.WriteLine("Ope! Not enough money!");
+                    OfferPurchases();
+                    return;
+                }
+                else
+                {
+                    playerMoney -= costOf25Cups;
+                    cupCount += 25;
+                    Console.WriteLine($"You bought 25 cups! You have {cupCount} cups. You have ${playerMoney}. Press Enter to continue.");
+                    Console.ReadLine();
+               
+                }
+
+                }
+                else if (response == "50")
+                {
+                if (playerMoney - costOf50Cups < 0)
+                {
+                    Console.WriteLine("Ope! Not enough money!");
+                    OfferPurchases();
+                    return;
+                }
+                else
+                {
+                    playerMoney -= costOf50Cups;
+                    cupCount += 50;
+                    Console.WriteLine($"You bought 50 cups! You have {cupCount} cups. You have ${playerMoney}. Press Enter to continue.");
+                    Console.ReadLine();
+
+                }
+
+                }
+                else if (response == "100")
+                {
+
+                if (playerMoney - costOf100Cups < 0)
+                {
+                    Console.WriteLine("Ope! Not enough money!");
+                    OfferPurchases();
+                    return;
+                }
+                    playerMoney -= costOf100Cups;
+                    cupCount += 100;
+                    Console.WriteLine($"You bought 100 cups! You have {cupCount} cups. You have ${playerMoney}. Press Enter to continue.");
+                    Console.ReadLine();
+                }
+                else if (response == "exit")
+                {
+                    Console.WriteLine("Back to the Store!");
+                    OfferPurchases();
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Input");
+                    BuyCups();
+                }
+            
         }
 
         public void BuySugar()
@@ -219,25 +324,59 @@ namespace LemonadeStand
             double costOf8CupsOfSugar = .58;
             double costOf20CupsOfSugar = 1.64;
             double costOf48CupsOfSugar = 3.43;
+
             Console.WriteLine("How many cups of sugar do you want to buy: 8($.58), 20($1.68), 48($3.43) or type exit to go back.");
             string response = Console.ReadLine();
             if (response == "8")
             {
-                playerMoney -= costOf8CupsOfSugar;
-                sugarCount += 8;
-                Console.WriteLine($"You bought 8 cups of sugar! You have {sugarCount} cups of sugar. You have ${playerMoney}.");
+                
+                if (playerMoney - costOf8CupsOfSugar < 0)
+                {
+                    Console.WriteLine("Ope! Not enough money!");
+                    OfferPurchases();
+                    return;
+                }
+                else
+                {
+                    playerMoney -= costOf8CupsOfSugar;
+                    sugarCount += 8;
+                    Console.WriteLine($"You bought 8 cups of sugar! You have {sugarCount} cups of sugar. You have ${playerMoney}. Press Enter to continue.");
+                    Console.ReadLine();
+                }
             }
             else if (response == "20")
             {
-                playerMoney -= costOf20CupsOfSugar;
-                sugarCount += 20;
-                Console.WriteLine($"You bought 20 cups of sugar! You have {sugarCount} cups of sugar. You have ${playerMoney}");
+
+                if (playerMoney - costOf20CupsOfSugar < 0)
+                {
+                    Console.WriteLine("Ope! Not enough money!");
+                    OfferPurchases();
+                    return;
+                }
+                else
+                {
+                    playerMoney -= costOf20CupsOfSugar;
+                    sugarCount += 20;
+                    Console.WriteLine($"You bought 20 cups of sugar! You have {sugarCount} cups of sugar. You have ${playerMoney}. Press Enter to continue.");
+                    Console.ReadLine();
+                }
             }
             else if (response == "48")
             {
-                playerMoney -= costOf48CupsOfSugar;
-                sugarCount += 48;
-                Console.WriteLine($"You bought 48 cups of sugar! You have {sugarCount} cups of sugar. You have ${playerMoney}");
+                
+                if (playerMoney - costOf48CupsOfSugar < 0)
+                {
+                    Console.WriteLine("Ope! Not enough money!");
+                    OfferPurchases();
+                    return;
+                }
+                else
+                {
+                    playerMoney -= costOf48CupsOfSugar;
+                    sugarCount += 48;
+                    Console.WriteLine($"You bought 48 cups of sugar! You have {sugarCount} cups of sugar. You have ${playerMoney}. Press Enter to continue.");
+                    Console.ReadLine();
+                }
             }
             else if (response == "exit")
             {
@@ -321,7 +460,7 @@ namespace LemonadeStand
         {
             Console.WriteLine($"Lemons Per Pitcher: {lemonsPerPitcher}");
             Console.WriteLine($"Cups of Sugar Per Pitcher: {sugarPerPitcher}");
-            Console.WriteLine("Total # of Cups {cupsInInventory}");
+            Console.WriteLine($"Total # of Cups {cupCount}");
             Console.WriteLine($"Ice Cubes per Cup: {iceCubesPerCup}");
         }
     }
