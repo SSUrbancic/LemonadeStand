@@ -14,6 +14,9 @@ namespace LemonadeStand
         public int iceCubesPerCup;
         public double playerMoney = 20;
         public int iceCubeCount;
+        public int sugarCount;
+        public int cupCount;
+        public int lemonCount;
 
         //Constructor
         public Game()
@@ -45,24 +48,22 @@ namespace LemonadeStand
             else if (numberOfDays == 14)
             {
                 Console.WriteLine("You have 14 days to sell as much lemonade as you can!");
-                //send response to timer and make 7 day limit parameters
+                //send response to timer and make 14 day limit parameters
             }
             else if (numberOfDays == 21)
             {
                 Console.WriteLine("You have 21 days to sell as much lemonade as you can!");
-                //send response to timer and make 7 day limit parameters
+                //send response to timer and make 21 day limit parameters
             }
             else
             {
                 Console.WriteLine("Invalid Input, please try again.");
                 DetermineNumberOfPlayDays();
             }
-
-
         }
         public void DisplayMenuItems()
         {
-            Console.WriteLine("Lemons: {lemonCount} Ice Cubes: {iceCubeCount} Cups of Sugar: {sugarCount} Cups: {cupCount}");
+            Console.WriteLine($"Lemons: {lemonCount}, Ice Cubes: {iceCubeCount}, Cups of Sugar: {sugarCount}, Cups: {cupCount}.");
             Console.WriteLine("Day #");
             Console.WriteLine($"Money: ${playerMoney}");
             Console.WriteLine("Display: displaytemperatureOfTheDay");
@@ -74,17 +75,17 @@ namespace LemonadeStand
             int purchaseChoice = int.Parse(Console.ReadLine());
             if (purchaseChoice == 1)
             {
-                Console.WriteLine("Enter cup buying method");
+                BuyCups();
                 OfferPurchases();
             }
             else if (purchaseChoice == 2)
             {
-                Console.WriteLine("Enter Lemon buying method");
+                BuyLemons();
                 OfferPurchases();
             }
             else if (purchaseChoice == 3)
             {
-                Console.WriteLine("Enter sugar buying method");
+                BuySugar();
                 OfferPurchases();
             }
             else if (purchaseChoice == 4)
@@ -113,7 +114,7 @@ namespace LemonadeStand
             {
                 playerMoney -= costOf100IceCubes;
                 iceCubeCount += 100;
-                Console.WriteLine($"You bought 100 Ice Cubes! You have {iceCubeCount} ice cubes. You have ${playerMoney}");
+                Console.WriteLine($"You bought 100 Ice Cubes! You have {iceCubeCount} ice cubes. You have ${playerMoney}.");
             }
             else if (response == "250")
             {
@@ -129,7 +130,7 @@ namespace LemonadeStand
             }
             else if (response == "exit")
             {
-                Console.WriteLine("Back to the Store");
+                Console.WriteLine("Back to the Store!");
                 OfferPurchases();
             }
             else
@@ -138,7 +139,133 @@ namespace LemonadeStand
                 BuyIceCubes();
             }
         }
-        
+
+        public void BuyLemons()
+        {
+            double costOf10Lemons = .85;
+            double costOf30Lemons = 2.07;
+            double costOf75Lemons = 4.03;
+            Console.WriteLine("How many lemons do you want to buy: 10($.85), 30($2.07), 75($4.03) or type exit to go back.");
+            string response = Console.ReadLine();
+            if (response == "10")
+            {
+                playerMoney -= costOf10Lemons;
+                lemonCount += 10;
+                Console.WriteLine($"You bought 10 lemons! You have {lemonCount} lemons. You have ${playerMoney}.");
+            }
+            else if (response == "30")
+            {
+                playerMoney -= costOf30Lemons;
+                lemonCount += 30;
+                Console.WriteLine($"You bought 30 lemons! You have {lemonCount} lemons. You have ${playerMoney}");
+            }
+            else if (response == "75")
+            {
+                playerMoney -= costOf75Lemons;
+                lemonCount += 75;
+                Console.WriteLine($"You bought 75 lemons! You have {lemonCount} lemons. You have ${playerMoney}");
+            }
+            else if (response == "exit")
+            {
+                Console.WriteLine("Back to the Store!");
+                OfferPurchases();
+            }
+            else
+            {
+                Console.WriteLine("Invalid Input");
+                BuyLemons();
+            }
+        }
+
+        public void BuyCups()
+        {
+            double costOf25Cups = .88;
+            double costOf50Cups = 1.68;
+            double costOf100Cups = 3.18;
+            Console.WriteLine("How many Cups do you want to buy: 25($.88), 50($1.68), 100($3.18) or type exit to go back.");
+            string response = Console.ReadLine();
+            if (response == "25")
+            {
+                playerMoney -= costOf25Cups;
+                cupCount += 25;
+                Console.WriteLine($"You bought 25 cups! You have {cupCount} cups. You have ${playerMoney}.");
+            }
+            else if (response == "50")
+            {
+                playerMoney -= costOf50Cups;
+                cupCount += 50;
+                Console.WriteLine($"You bought 50 cups! You have {cupCount} cups. You have ${playerMoney}");
+            }
+            else if (response == "100")
+            {
+                playerMoney -= costOf100Cups;
+                cupCount += 100;
+                Console.WriteLine($"You bought 100 cups! You have {cupCount} cups. You have ${playerMoney}");
+            }
+            else if (response == "exit")
+            {
+                Console.WriteLine("Back to the Store!");
+                OfferPurchases();
+            }
+            else
+            {
+                Console.WriteLine("Invalid Input");
+                BuyCups();
+            }
+        }
+
+        public void BuySugar()
+        {
+            double costOf8CupsOfSugar = .58;
+            double costOf20CupsOfSugar = 1.64;
+            double costOf48CupsOfSugar = 3.43;
+            Console.WriteLine("How many cups of sugar do you want to buy: 8($.58), 20($1.68), 48($3.43) or type exit to go back.");
+            string response = Console.ReadLine();
+            if (response == "8")
+            {
+                playerMoney -= costOf8CupsOfSugar;
+                sugarCount += 8;
+                Console.WriteLine($"You bought 8 cups of sugar! You have {sugarCount} cups of sugar. You have ${playerMoney}.");
+            }
+            else if (response == "20")
+            {
+                playerMoney -= costOf20CupsOfSugar;
+                sugarCount += 20;
+                Console.WriteLine($"You bought 20 cups of sugar! You have {sugarCount} cups of sugar. You have ${playerMoney}");
+            }
+            else if (response == "48")
+            {
+                playerMoney -= costOf48CupsOfSugar;
+                sugarCount += 48;
+                Console.WriteLine($"You bought 48 cups of sugar! You have {sugarCount} cups of sugar. You have ${playerMoney}");
+            }
+            else if (response == "exit")
+            {
+                Console.WriteLine("Back to the Store!");
+                OfferPurchases();
+            }
+            else
+            {
+                Console.WriteLine("Invalid Input");
+                BuySugar();
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         public void SetLemonadeRecipe()
@@ -148,7 +275,6 @@ namespace LemonadeStand
             sugarPerPitcher = DetermineSugarPerPitcher();
             DetermineIfRecipeIsSatisfactory();
         }
-
         public void DetermineIfRecipeIsSatisfactory()
         {
             Console.WriteLine("Are you happy with the Recipe you have chosen? Enter: yes or no.");
@@ -170,7 +296,6 @@ namespace LemonadeStand
                 DetermineIfRecipeIsSatisfactory();
             }
         }
-
         public int DetermineLemonsPerPitcher()
         {
             int lemonsPerPitcher;
@@ -199,6 +324,5 @@ namespace LemonadeStand
             Console.WriteLine("Total # of Cups {cupsInInventory}");
             Console.WriteLine($"Ice Cubes per Cup: {iceCubesPerCup}");
         }
-
     }
 }
