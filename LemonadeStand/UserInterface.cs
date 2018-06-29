@@ -14,9 +14,6 @@ namespace LemonadeStand
     public UserInterface(Player playerOne)
     {
             this.playerOne = playerOne;
-            DisplayInstructions();
-            DisplayMenuItems();
-            DisplayLemonadeRecipe();
     }
 
         //METHODS(CAN DO)
