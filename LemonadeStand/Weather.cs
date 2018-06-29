@@ -23,6 +23,10 @@ namespace LemonadeStand
         public Weather()
         {
             DetermineForcast();
+            DeterminePredictedTemperature();
+            DetermineActualTemperature();
+            DetermineActualWeather();
+            DetermineWeatherInfluence();
         }
         //METHODS (CAN DO)
         public void DetermineForcast()

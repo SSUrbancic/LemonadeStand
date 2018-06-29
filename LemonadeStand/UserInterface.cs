@@ -9,11 +9,15 @@ namespace LemonadeStand
     class UserInterface
     {//MEMBERS (HAS A)
         Player playerOne;
+        Weather weather;
+        
+
 
     //CONSTRUCTOR
-    public UserInterface(Player playerOne)
+        public UserInterface(Player playerOne, Weather weather)
     {
             this.playerOne = playerOne;
+            this.weather = weather;
     }
 
         //METHODS(CAN DO)
@@ -27,8 +31,8 @@ namespace LemonadeStand
             Console.WriteLine($"Lemons: {playerOne.lemonCount}, Ice Cubes: {playerOne.iceCubeCount}, Cups of Sugar: {playerOne.sugarCount}, Cups: {playerOne.cupCount}.");
             Console.WriteLine("Day #");
             Console.WriteLine($"Money: ${playerOne.playerMoney}");
-            Console.WriteLine("Display: displaytemperatureOfTheDay");
-            Console.WriteLine("Display: forecastOFTheDay");
+            Console.WriteLine($"Today's temperature: {weather.actualTemperature} degrees.");
+            Console.WriteLine($"Today's forecast is: {weather.actualWeather}");
         }
         public void DisplayLemonadeRecipe()
         {

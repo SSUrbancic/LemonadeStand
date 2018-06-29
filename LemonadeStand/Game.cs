@@ -15,6 +15,7 @@ namespace LemonadeStand
         Lemons lemons;
         Sugar sugar;
         Cups cups;
+        Weather weather;
         Player playerOne;
         Store itemStore;
         UserInterface userInterface;
@@ -27,9 +28,10 @@ namespace LemonadeStand
             lemons = new Lemons();
             sugar = new Sugar();
             cups = new Cups();
+            weather = new Weather();
             playerOne = new Player();
             itemStore = new Store(iceCubes, lemons, cups, sugar, playerOne);
-            userInterface = new UserInterface(playerOne);
+            userInterface = new UserInterface(playerOne, weather);
         }
 
         //Methods(Can Do)
