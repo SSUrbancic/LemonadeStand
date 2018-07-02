@@ -36,7 +36,7 @@ namespace LemonadeStand
         {
             if (playerOne.lemonadeRecipe.pricePerCup < .50 || (weather.actualTemperature > 80 && playerOne.lemonadeRecipe.pricePerCup < .75))
             {
-                if (RandomNumberGenerator(0,100) + weather.weatherInfluence > 73)
+                if (RandomNumberGenerator(0,100) + weather.weatherInfluence > 70)
                 {
                         willBuyLemonade = true;
                 }

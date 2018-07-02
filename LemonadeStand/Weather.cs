@@ -47,7 +47,7 @@ namespace LemonadeStand
         }
         public void DetermineActualWeather()
         {
-            if (random.Next(100) <= 50)
+            if (RandomNumberGenerator(0, 100) <= 50)
             {
                 actualWeather = weather[RandomNumberGenerator(0, weather.Count - 1)];
             }
