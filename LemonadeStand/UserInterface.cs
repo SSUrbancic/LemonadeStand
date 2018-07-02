@@ -28,7 +28,7 @@ namespace LemonadeStand
         }
         public void DisplayMenuItems()
         {
-            Console.WriteLine($"Lemons: {playerOne.lemonCount}, Ice Cubes: {playerOne.iceCubeCount}, Cups of Sugar: {playerOne.sugarCount}, Cups: {playerOne.cupCount}.");
+            Console.WriteLine($"Inventory: Lemons: {playerOne.lemonCount}, Ice Cubes: {playerOne.iceCubeCount}, Cups of Sugar: {playerOne.sugarCount}, Cups: {playerOne.cupCount}.");
             Console.WriteLine("Day #");
             Console.WriteLine($"Money: ${playerOne.playerMoney}");
             Console.WriteLine($"Today's temperature: {weather.actualTemperature} degrees.");

@@ -10,8 +10,6 @@ namespace LemonadeStand
     {
         //MEMBERS(HAS A)
         public int customerCountPerDay;
-        public int totalLemonadesSold;
-        public double moneyMadePerDay;
         public int cupCount = 0;
         Player playerOne;
         Weather weather;
@@ -27,6 +25,16 @@ namespace LemonadeStand
             this.customer = customer;
         }
         //METHODS
+        public void ExecuteDailyLemonadeSales()
+        {
+            GenerateCustomersPerDay();
+            while (customerCountPerDay > 0 && playerOne.iceCubeCount - playerOne.lemonadeRecipe.iceCubesPerCup > 0 && playerOne.lemonCount - playerOne.lemonadeRecipe.lemonsPerPitcher > 0 && playerOne.sugarCount - playerOne.lemonadeRecipe.sugarPerPitcher > 0)
+            {
+                customer = new Customer(weather, playerOne);
+                CustomerPurchases();
+                customerCountPerDay -= 1;
+            }
+        }
         public void GenerateCustomersPerDay()
         {
             int baseNumberOfCustomersPerDay = 99;
@@ -50,14 +58,17 @@ namespace LemonadeStand
             if (cupCount == 0)
             {
                 MakePitcherOfLemonade();
-                if (customer.willBuyLemonade == true)
-                {
+            }
+            
+            if (customer.willBuyLemonade == true && playerOne.cupCount > 0)
+            {
+
                     playerOne.cupCount -= 1;
                     playerOne.iceCubeCount -= playerOne.lemonadeRecipe.iceCubesPerCup;
                     playerOne.playerMoney += playerOne.lemonadeRecipe.pricePerCup;
                     cupCount -= 1;
-                }
-            }
+                
+            }            
         }
     }
 }

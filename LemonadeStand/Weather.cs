@@ -29,15 +29,27 @@ namespace LemonadeStand
             DetermineWeatherInfluence();
         }
         //METHODS (CAN DO)
+        private static readonly Random randomInt = new Random();
+        private static readonly object syncLock = new object();
+
+        public int RandomNumberGenerator(int min, int max)
+        {
+            lock (syncLock)
+            {
+                int RandomNumber = randomInt.Next(min, max);
+                return RandomNumber;
+            }
+        }
+
         public void DetermineForcast()
         {
-            forecastedWeather = weather[random.Next(0,weather.Count - 1)];
+            forecastedWeather = weather[RandomNumberGenerator(0, weather.Count - 1)];
         }
         public void DetermineActualWeather()
         {
             if (random.Next(100) <= 50)
             {
-                actualWeather = weather[random.Next(0, weather.Count - 1)];
+                actualWeather = weather[RandomNumberGenerator(0, weather.Count - 1)];
             }
             else
             {
@@ -46,11 +58,11 @@ namespace LemonadeStand
         }
         public void DeterminePredictedTemperature()
         {
-            predictedTemperature = random.Next(60, 101);
+            predictedTemperature = RandomNumberGenerator(60, 101);
         }
         public void DetermineActualTemperature()
         {
-            actualTemperature = predictedTemperature + random.Next(-10, 11);
+            actualTemperature = predictedTemperature + RandomNumberGenerator(-10, 11);
         }
         public void DetermineWeatherInfluence()
         {
@@ -76,7 +88,7 @@ namespace LemonadeStand
             }
             if (actualTemperature < 70)
             {
-                weatherInfluence += random.Next(-6, 7);
+                weatherInfluence += RandomNumberGenerator(-6, 7);
             }
         }
     }

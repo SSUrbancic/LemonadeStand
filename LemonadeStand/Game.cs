@@ -15,7 +15,9 @@ namespace LemonadeStand
         Lemons lemons;
         Sugar sugar;
         Cups cups;
+        Day day;
         Weather weather;
+        Customer customer;
         Player playerOne;
         Store itemStore;
         UserInterface userInterface;
@@ -32,6 +34,9 @@ namespace LemonadeStand
             playerOne = new Player();
             itemStore = new Store(iceCubes, lemons, cups, sugar, playerOne);
             userInterface = new UserInterface(playerOne, weather);
+            day = new Day(playerOne, weather, customer);
+
+
         }
 
         //Methods(Can Do)
@@ -39,9 +44,15 @@ namespace LemonadeStand
         public void RunGame() {
             userInterface.DisplayInstructions();
             DetermineNumberOfPlayDays();
-            userInterface.DisplayMenuItems();
-            itemStore.OfferPurchases();
-            playerOne.lemonadeRecipe.SetLemonadeRecipe();
+            while (numberOfGameDays > 0)
+            {
+                weather = new Weather();
+                userInterface.DisplayMenuItems();
+                itemStore.OfferPurchases();
+                playerOne.lemonadeRecipe.SetLemonadeRecipe();
+                day.ExecuteDailyLemonadeSales();
+                numberOfGameDays -= 1;
+            }
         }
         void DetermineNumberOfPlayDays()
         {

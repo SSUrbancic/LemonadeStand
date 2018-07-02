@@ -19,7 +19,10 @@ namespace LemonadeStand
         //Constructor
         public Player()
         {
-
+             iceCubeCount = 0;
+            sugarCount = 0;
+             cupCount = 0;
+             lemonCount = 0;
         }
         //METHODS(CAN DO)
 
