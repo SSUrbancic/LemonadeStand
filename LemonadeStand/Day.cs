@@ -11,6 +11,13 @@ namespace LemonadeStand
         //MEMBERS(HAS A)
         public int customerCountPerDay;
         public int cupCount = 0;
+        public double beforeSalesDollarAmount;
+        public double afterSalesDollarAmount;
+        public double dailyNetIncome;
+        public int cupCountAtBeginningOfDay;
+        public int cupCountAtEndOfDay;
+        public int totalCupSalesPerDay;
+        public int lemonadesSoldPerDay;
         Player playerOne;
         Weather weather;
         Customer customer;
@@ -24,6 +31,7 @@ namespace LemonadeStand
             this.weather = weather;
             this.customer = customer;
         }
+
         //METHODS
         public void ExecuteDailyLemonadeSales()
         {
@@ -69,6 +77,41 @@ namespace LemonadeStand
                     cupCount -= 1;
                 
             }            
+        }
+        public double DetermineBeforeSalesDollarAmount()
+        {
+            beforeSalesDollarAmount = playerOne.playerMoney;
+            return beforeSalesDollarAmount;
+        }
+        public double DetermineAfterSalesDollarAmount()
+        {
+            afterSalesDollarAmount = playerOne.playerMoney;
+            return afterSalesDollarAmount;
+        }
+        public double DetermineNetIncome()
+        {
+            dailyNetIncome = afterSalesDollarAmount - beforeSalesDollarAmount;
+            return dailyNetIncome;
+        }
+        public int DetermineBeginingOfDayCupCount()
+        {
+            cupCountAtBeginningOfDay = playerOne.cupCount;
+            return cupCountAtBeginningOfDay;
+        } 
+        public int DetermineEndOfDayCupCount()
+        {
+            cupCountAtEndOfDay = playerOne.cupCount;
+            return cupCountAtEndOfDay;
+        }
+        public int DetermineLemonadesSoldPerDay()
+        {
+            lemonadesSoldPerDay = cupCountAtBeginningOfDay - cupCountAtEndOfDay;
+            return lemonadesSoldPerDay;
+        }
+        public void DisplayDailySales()
+        {
+            Console.WriteLine($"You've made ${dailyNetIncome} today!");
+            Console.WriteLine($"You've sold {lemonadesSoldPerDay} cups of lemonade today!");
         }
     }
 }

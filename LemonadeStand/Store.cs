@@ -53,7 +53,7 @@ namespace LemonadeStand
             }
             else if (purchaseChoice == 5)
             {
-                Console.WriteLine("Continue to next method");
+                Console.WriteLine("Set your: Price Per Cup, lemons per pitcher, Ice Per Cup, and Sugar per pitcher.");
             }
             else
             {

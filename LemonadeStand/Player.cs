@@ -24,6 +24,14 @@ namespace LemonadeStand
              cupCount = 0;
              lemonCount = 0;
         }
+
+        internal Recipe Recipe
+        {
+            get => default(Recipe);
+            set
+            {
+            }
+        }
         //METHODS(CAN DO)
 
 

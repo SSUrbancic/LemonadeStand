@@ -10,7 +10,6 @@ namespace LemonadeStand
     {//MEMBERS (HAS A)
         Player playerOne;
         Weather weather;
-        
 
 
     //CONSTRUCTOR
@@ -29,7 +28,6 @@ namespace LemonadeStand
         public void DisplayMenuItems()
         {
             Console.WriteLine($"Inventory: Lemons: {playerOne.lemonCount}, Ice Cubes: {playerOne.iceCubeCount}, Cups of Sugar: {playerOne.sugarCount}, Cups: {playerOne.cupCount}.");
-            Console.WriteLine("Day #");
             Console.WriteLine($"Money: ${playerOne.playerMoney}");
             Console.WriteLine($"Today's temperature: {weather.actualTemperature} degrees.");
             Console.WriteLine($"Today's forecast is: {weather.actualWeather}");

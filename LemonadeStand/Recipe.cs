@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    class Recipe
+    public class Recipe
     {
         //MEMBER (HAS A)
         public int lemonsPerPitcher;
@@ -19,6 +19,7 @@ namespace LemonadeStand
         {
 
         }
+
         public void SetLemonadeRecipe()
         {
             DeterminePricePerCup();
@@ -49,6 +50,7 @@ namespace LemonadeStand
             }
         }
         //METHODS (CAN DO)
+
         public int DetermineLemonsPerPitcher()
         {
             int lemonsPerPitcher;
